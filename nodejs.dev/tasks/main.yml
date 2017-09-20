@@ -1,0 +1,18 @@
+---
+# tasks file for nodejs.dev
+- name: Install nodejs
+    apt:
+      name: nodejs
+      update_cache: yes
+      state: latest
+
+- name: Install npm
+    apt:
+      name: npm
+      state: latest
+
+- name: Install pm2
+    npm:
+      name: pm2
+      state: latest
+	  
