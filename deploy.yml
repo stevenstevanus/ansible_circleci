@@ -1,5 +1,5 @@
 ---
 - hosts: test_dev
+  sudo: yes
   roles:
-    - { role: nodejs.dev, become: yes, become_method: sudo }
-    
+    - role: nodejs.dev    
