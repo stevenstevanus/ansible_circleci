@@ -1,9 +1,5 @@
 ---
 # tasks file for nodejs.dev
-- name:
-  become: yes
-  become_method: sudo
-
 - name: Install nodejs
   apt:
     name: nodejs
