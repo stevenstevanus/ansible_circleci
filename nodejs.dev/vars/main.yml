@@ -1,7 +1,4 @@
 ---
 # vars file for nodejs.dev
 - hosts: test_dev
-  become: yes
-  become_method: sudo
-  roles:
-    - { role: "nodejs.dev", version: "0.1.0" }
+  remote_user: root
