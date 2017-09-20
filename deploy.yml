@@ -1,5 +1,5 @@
 ---
 - hosts: test_dev
   roles:
-    - role: nodejs_dev
+    - role: nodejs.dev
     
