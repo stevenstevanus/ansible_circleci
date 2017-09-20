@@ -1,2 +1,7 @@
 ---
 # vars file for nodejs.dev
+- hosts: test_dev
+  become: yes
+  become_method: sudo
+  roles:
+    - role: nodejs.dev
