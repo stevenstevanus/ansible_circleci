@@ -26,10 +26,9 @@
 - name: Add User 'memberid'
   user:
     name: memberid
-    createhome: no
     shell: /usr/sbin/nologin
     group: memberid
-    password: $6$U9d4mYL8ggfd$3rvJrwBxf38.yBLjxm7VUm4uTSSBsavE28x0zwcphSr9Gnvecz7tKtrSbUhQjL3kNyXg0wxVxic/VJA.z7Ayu1
+    #password: $6$U9d4mYL8ggfd$3rvJrwBxf38.yBLjxm7VUm4uTSSBsavE28x0zwcphSr9Gnvecz7tKtrSbUhQjL3kNyXg0wxVxic/VJA.z7Ayu1
 
 - name: Make Directory for Nodejs App
   file:
