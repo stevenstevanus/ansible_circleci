@@ -28,5 +28,4 @@
     name: memberid
     shell: /usr/sbin/nologin
     group: memberid
-    home: false
     system: yes
