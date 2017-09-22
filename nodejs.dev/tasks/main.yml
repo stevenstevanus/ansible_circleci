@@ -55,3 +55,4 @@
     path: /var/www/nodejs/
     owner: memberid
     group: memberid
+    recurse: yes
