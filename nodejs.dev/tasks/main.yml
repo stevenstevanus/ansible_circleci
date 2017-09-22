@@ -30,3 +30,18 @@
     shell: /usr/sbin/nologin
     group: memberid
     system: yes
+
+- name: Make Directory for Nodejs App
+  file:
+    path: /var/www/nodejs
+	state: directory
+    mode: 0755
+
+- name: change dir to /var/www/nodejs
+  command: cd /var/www/nodejs
+
+- name: Git clone repo
+  git:
+    repo: https://github.com/stevenstevanus/testnodejs.git
+    clone: yes
+    dest: /var/www/nodejs
