@@ -34,7 +34,7 @@
 - name: Make Directory for Nodejs App
   file:
     path: /var/www/nodejs
-	state: directory
+    state: directory
     mode: 0755
 
 - name: change dir to /var/www/nodejs
