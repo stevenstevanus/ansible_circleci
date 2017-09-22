@@ -50,13 +50,6 @@
     dest: /var/www/nodejs
     remote: origin
 
-- name: Chown nodejs app
-  file:
-    path: /var/www/nodejs/
-    owner: memberid
-    group: memberid
-    recurse: yes
-
 - name: Git checkout development branch
   shell: git checkout development
   args:
@@ -71,6 +64,13 @@
   shell: npm install
   args:
     chdir: /var/www/nodejs
+
+- name: Chown nodejs app
+  file:
+    path: /var/www/nodejs/
+    owner: memberid
+    group: memberid
+    recurse: yes
 
 - name: Start the app
   shell: npm start
