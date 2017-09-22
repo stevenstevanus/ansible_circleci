@@ -52,6 +52,6 @@
 
 - name: Chown nodejs app
   file:
-    path: /var/www/nodejs/*
+    path: /var/www/nodejs/
     owner: memberid
     group: memberid
