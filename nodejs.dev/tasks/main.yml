@@ -56,3 +56,13 @@
     owner: memberid
     group: memberid
     recurse: yes
+
+- name: Git checkout development branch
+  shell: git checkout development
+  args:
+    chdir: /var/www/nodejs
+
+- name: npm init
+  shell: npm && npm start
+  args:
+    chdir: /var/www/nodejs
