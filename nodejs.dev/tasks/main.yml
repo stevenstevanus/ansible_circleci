@@ -16,3 +16,16 @@
     name: pm2
     global: yes
     state: latest
+
+- name: Add Group 'memberid'
+  group:
+    name: memberid
+    system: yes
+    state: present
+    ignore_warnings: yes
+
+- name: Add User 'memberid'
+  user:
+    name: memberid
+    shell: /usr/sbin/nologin
+    group: memberid
