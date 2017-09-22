@@ -22,11 +22,11 @@
     name: memberid
     system: yes
     state: present
-    ignore_errors: yes
+    ignore_errors: true
 
 - name: Add User 'memberid'
   user:
     name: memberid
     shell: /usr/sbin/nologin
     group: memberid
-    ignore_errors: yes
+    ignore_errors: true
