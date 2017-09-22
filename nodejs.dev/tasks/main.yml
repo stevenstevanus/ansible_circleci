@@ -29,7 +29,6 @@
     createhome: no
     shell: /usr/sbin/nologin
     group: memberid
-    system: yes
 
 - name: Make Directory for Nodejs App
   file:
