@@ -45,4 +45,13 @@
     chdir: /var/www/nodejs
 
 - name: Git clone repo
-  command: git clone https://github.com/stevenstevanus/testnodejs.git   
+  git:
+    repo: 'https://github.com/stevenstevanus/testnodejs.git'
+    dest: /var/www/nodejs
+    remote: origin
+
+- name: Chown nodejs app
+  file:
+    path: /var/www/nodejs/*
+    owner: memberid
+    group: memberid
