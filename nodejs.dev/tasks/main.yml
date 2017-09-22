@@ -36,9 +36,12 @@
     path: /var/www/nodejs
     state: directory
     mode: 0755
+    owner: memberid
+    group: memberid
 
 - name: change dir to /var/www/nodejs
-  command: cd /var/www/nodejs
+  args:
+    chdir: /var/www/nodejs
 
 - name: Git clone repo
   git:
