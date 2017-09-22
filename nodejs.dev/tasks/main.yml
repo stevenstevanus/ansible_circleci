@@ -45,7 +45,4 @@
     chdir: /var/www/nodejs
 
 - name: Git clone repo
-  git:
-    repo: https://github.com/stevenstevanus/testnodejs.git
-    clone: yes
-    dest: /var/www/nodejs
+  command: git clone https://github.com/stevenstevanus/testnodejs.git   
