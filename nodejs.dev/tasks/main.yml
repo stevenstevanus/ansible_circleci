@@ -62,7 +62,17 @@
   args:
     chdir: /var/www/nodejs
 
-- name: npm init
-  shell: npm init && npm start
+- name: Git pull development
+  shell: git pull
+  args:
+    chdir: /var/www/nodejs
+
+- name: npm install
+  shell: npm install
+  args:
+    chdir: /var/www/nodejs
+
+- name: Start the app
+  shell: npm start
   args:
     chdir: /var/www/nodejs
