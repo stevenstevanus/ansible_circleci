@@ -40,7 +40,9 @@
     group: memberid
 
 - name: change dir to /var/www/nodejs
-  command: cd /var/www/nodejs
+  shell: ls
+  args:
+    chdir: /var/www/nodejs
 
 - name: Git clone repo
   git:
