@@ -81,7 +81,15 @@
 #  args:
 #    chdir: /var/www/nodejs
 
-- name: run pm2 under memberid user
-  shell: su memberid -c 'pm2 restart --update-env /var/www/hello.js'
+- name: Start pm2 under memberid user
+  shell: su memberid -c 'NODE_ENV=development pm2 start /var/www/hello.js'
   args:
     chdir: /var/www/nodejs
+  register: pm2_start_result
+  ignore_errors: True
+
+- name: run pm2 under memberid user
+  shell: su memberid -c 'NODE_ENV=development pm2 restart /var/www/hello.js'
+  args:
+    chdir: /var/www/nodejs
+  when: pm2_start_result.rc == 1
