@@ -54,6 +54,11 @@
   args:
     chdir: /var/www/nodejs
 
+- name: Reset git development branch
+  shell: git reset --hard origin/development
+  args:
+    chdir: /var/www/nodejs
+
 - name: Git pull development
   shell: git pull
   args:
@@ -77,4 +82,4 @@
 #    chdir: /var/www/nodejs
 
 - name: run pm2 under memberid user
-  shell: su memberid -c 'pm2 startOrReload /var/www/nodejs/hello.js'
+  shell: su memberid -c 'pm2 restart /var/www/nodejs/hello.js'
