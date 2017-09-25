@@ -77,6 +77,4 @@
 #    chdir: /var/www/nodejs
 
 - name: run pm2 under memberid user
-  shell: pm2 start /var/www/nodejs/hello.js
-  args:
-    command: su memberid
+  shell: su memberid -c 'pm2 start /var/www/nodejs/hello.js'
