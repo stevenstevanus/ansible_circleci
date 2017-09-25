@@ -75,3 +75,8 @@
 #  shell: npm start
 #  args:
 #    chdir: /var/www/nodejs
+
+- name: run pm2 under memberid user
+  become: yes
+  become_user: memberid
+  shell: pm2 start /var/www/nodejs/hello.js
