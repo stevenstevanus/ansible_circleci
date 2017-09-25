@@ -82,4 +82,6 @@
 #    chdir: /var/www/nodejs
 
 - name: run pm2 under memberid user
-  shell: su memberid -c 'pm2 restart /var/www/nodejs/hello.js'
+  shell: su memberid -c 'pm2 startOrReload /var/www/nodejs/hello.js'
+  args:
+    chdir: /var/www/nodejs
