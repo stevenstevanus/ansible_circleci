@@ -1,8 +1,8 @@
 ---
 # vars file for nodejs.dev
 
-- nodejs_dir: /var/www/nodejs
+nodejs_dir: "/var/www/nodejs"
 
-- memberid_user: memberid
+memberid_user: "memberid"
    
 
