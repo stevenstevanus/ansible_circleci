@@ -3,6 +3,6 @@
 
 - nodejs_dir: /var/www/nodejs
 
--  memberid_user: memberid
+- memberid_user: memberid
    
 
