@@ -19,20 +19,20 @@
 
 - name: Add Group 'memberid'
   group:
-    name: {{ memberid_user }}
+    name: "{{ memberid_user }}"
     system: yes
     state: present
 
 - name: Add User 'memberid'
   user:
-    name: {{ memberid_user }}
+    name: "{{ memberid_user }}"
     #shell: /usr/sbin/nologin
     group: memberid
     password: $6$U9d4mYL8ggfd$3rvJrwBxf38.yBLjxm7VUm4uTSSBsavE28x0zwcphSr9Gnvecz7tKtrSbUhQjL3kNyXg0wxVxic/VJA.z7Ayu1
 
 - name: Make Directory for Nodejs App
   file:
-    path: {{ nodejs_dir }}
+    path: "{{ nodejs_dir }}"
     state: directory
     mode: 0755
     owner: memberid
@@ -41,7 +41,7 @@
 - name: change dir to /var/www/nodejs
   shell: ls
   args:
-    chdir: "{{nodejs_dir}}"
+    chdir: "{{ nodejs_dir }}"
 
 - name: Git clone repo
   git:
@@ -52,17 +52,17 @@
 - name: Git checkout development branch
   shell: git checkout development
   args:
-    chdir: {{nodejs_dir}}
+    chdir: "{{ nodejs_dir }}"
 
 - name: Reset git development branch
   shell: git reset --hard origin/development
   args:
-    chdir: {{nodejs_dir}}
+    chdir: "{{ nodejs_dir }}"
 
 - name: Git pull development
   shell: git pull
   args:
-    chdir: {{nodejs_dir}}
+    chdir: "{{ nodejs_dir }}"
 
 - name: npm install
   shell: npm install
@@ -71,7 +71,7 @@
 
 - name: Chown nodejs app
   file:
-    path: {{nodejs_dir}}
+    path: "{{ nodejs_dir }}"
     owner: memberid
     group: memberid
     recurse: yes
@@ -84,12 +84,12 @@
 - name: Start pm2 under memberid user
   shell: su memberid -c 'NODE_ENV=development pm2 start /var/www/nodejs/hello.js'
   args:
-    chdir: {{nodejs_dir}}
+    chdir: "{{ nodejs_dir }}"
   register: pm2_start_result
   ignore_errors: True
 
 - name: run pm2 under memberid user
   shell: su memberid -c 'NODE_ENV=development pm2 restart /var/www/nodejs/hello.js'
   args:
-    chdir: {{nodejs_dir}}
+    chdir: "{{ nodejs_dir }}"
   when: pm2_start_result.rc == 1
