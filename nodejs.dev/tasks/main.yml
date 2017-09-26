@@ -19,20 +19,20 @@
 
 - name: Add Group 'memberid'
   group:
-    name: "{{memberid_user}}"
+    name: {{ memberid_user }}
     system: yes
     state: present
 
 - name: Add User 'memberid'
   user:
-    name: {{memberid_user}}
+    name: {{ memberid_user }}
     #shell: /usr/sbin/nologin
     group: memberid
     password: $6$U9d4mYL8ggfd$3rvJrwBxf38.yBLjxm7VUm4uTSSBsavE28x0zwcphSr9Gnvecz7tKtrSbUhQjL3kNyXg0wxVxic/VJA.z7Ayu1
 
 - name: Make Directory for Nodejs App
   file:
-    path: {{nodejs_dir}}
+    path: {{ nodejs_dir }}
     state: directory
     mode: 0755
     owner: memberid
