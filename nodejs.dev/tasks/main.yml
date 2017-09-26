@@ -46,7 +46,7 @@
 - name: Git clone repo
   git:
     repo: 'https://github.com/stevenstevanus/testnodejs.git'
-    dest: {{nodejs_dir}}
+    dest: "{{ nodejs_dir }}"
     remote: origin
 
 - name: Git checkout development branch
