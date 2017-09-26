@@ -19,7 +19,7 @@
 
 - name: Add Group 'memberid'
   group:
-    name: {{memberid_user}}
+    name: "{{memberid_user}}"
     system: yes
     state: present
 
@@ -41,7 +41,7 @@
 - name: change dir to /var/www/nodejs
   shell: ls
   args:
-    chdir: {{nodejs_dir}}
+    chdir: "{{nodejs_dir}}"
 
 - name: Git clone repo
   git:
@@ -71,7 +71,7 @@
 
 - name: Chown nodejs app
   file:
-    path: {{nodejs_dir}}/
+    path: {{nodejs_dir}}
     owner: memberid
     group: memberid
     recurse: yes
