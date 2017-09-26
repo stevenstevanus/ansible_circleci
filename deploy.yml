@@ -2,4 +2,4 @@
 - hosts: test_dev
   sudo: yes
   roles:
-    - role: nodejs.dev    
+    - nodejs.dev    
