@@ -25,7 +25,7 @@
 
 - name: Add User 'memberid'
   user:
-    name: memberid
+    name: {{memberid_user}}
     #shell: /usr/sbin/nologin
     group: memberid
     password: $6$U9d4mYL8ggfd$3rvJrwBxf38.yBLjxm7VUm4uTSSBsavE28x0zwcphSr9Gnvecz7tKtrSbUhQjL3kNyXg0wxVxic/VJA.z7Ayu1
@@ -67,7 +67,7 @@
 - name: npm install
   shell: npm install
   args:
-    chdir: {{nodejs_dir}}s
+    chdir: {{nodejs_dir}}
 
 - name: Chown nodejs app
   file:
@@ -91,5 +91,5 @@
 - name: run pm2 under memberid user
   shell: su memberid -c 'NODE_ENV=development pm2 restart /var/www/nodejs/hello.js'
   args:
-    chdir: {{nodejs_dir}}s
+    chdir: {{nodejs_dir}}
   when: pm2_start_result.rc == 1
