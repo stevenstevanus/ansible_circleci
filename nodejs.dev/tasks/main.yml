@@ -67,7 +67,7 @@
 - name: npm install
   shell: npm install
   args:
-    chdir: {{nodejs_dir}}
+    chdir: "{{ nodejs_dir }}"
 
 - name: Chown nodejs app
   file:
