@@ -19,7 +19,7 @@
 
 - name: Add Group 'memberid'
   group:
-    name: memberid
+    name: {{memberid_user}}
     system: yes
     state: present
 
@@ -32,7 +32,7 @@
 
 - name: Make Directory for Nodejs App
   file:
-    path: /var/www/nodejs
+    path: {{nodejs_dir}}
     state: directory
     mode: 0755
     owner: memberid
@@ -41,37 +41,37 @@
 - name: change dir to /var/www/nodejs
   shell: ls
   args:
-    chdir: /var/www/nodejs
+    chdir: {{nodejs_dir}}
 
 - name: Git clone repo
   git:
     repo: 'https://github.com/stevenstevanus/testnodejs.git'
-    dest: /var/www/nodejs
+    dest: {{nodejs_dir}}
     remote: origin
 
 - name: Git checkout development branch
   shell: git checkout development
   args:
-    chdir: /var/www/nodejs
+    chdir: {{nodejs_dir}}
 
 - name: Reset git development branch
   shell: git reset --hard origin/development
   args:
-    chdir: /var/www/nodejs
+    chdir: {{nodejs_dir}}
 
 - name: Git pull development
   shell: git pull
   args:
-    chdir: /var/www/nodejs
+    chdir: {{nodejs_dir}}
 
 - name: npm install
   shell: npm install
   args:
-    chdir: /var/www/nodejs
+    chdir: {{nodejs_dir}}s
 
 - name: Chown nodejs app
   file:
-    path: /var/www/nodejs/
+    path: {{nodejs_dir}}/
     owner: memberid
     group: memberid
     recurse: yes
@@ -84,12 +84,12 @@
 - name: Start pm2 under memberid user
   shell: su memberid -c 'NODE_ENV=development pm2 start /var/www/nodejs/hello.js'
   args:
-    chdir: /var/www/nodejs
+    chdir: {{nodejs_dir}}
   register: pm2_start_result
   ignore_errors: True
 
 - name: run pm2 under memberid user
   shell: su memberid -c 'NODE_ENV=development pm2 restart /var/www/nodejs/hello.js'
   args:
-    chdir: /var/www/nodejs
+    chdir: {{nodejs_dir}}s
   when: pm2_start_result.rc == 1
